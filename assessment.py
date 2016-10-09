@@ -140,7 +140,7 @@ def translate_to_pirate_talk(phrase):
      "my": "me", "is": "be"}
     
     translation = []
-    for word in phrase.split():
+    for word in phrase.split(" "):
         if word in english_to_pirate:
             translation.append(english_to_pirate[word])
         else:
