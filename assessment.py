@@ -29,9 +29,8 @@ def count_words(phrase):
         {'Porcupine': 1, 'do.': 1, 'porcupine': 1, 'see,': 1}
     """
     word_counts = {}
-    separate_phrase = phrase.split()
 
-    for word in separate_phrase:
+    for word in phrase.split():
         word_counts[word] = word_counts.get(word, 0) + 1
     
     return word_counts
@@ -56,8 +55,18 @@ def get_melon_price(melon_name):
         >>> get_melon_price('Tomato')
         'No price found'
     """
+    melon_data = {"Watermelon" : 2.95, 
+                    "Cantaloupe" : 2.50, 
+                    "Musk" : 3.25, 
+                    "Christmas" : 14.25
+                    }
 
-    return 0
+    if melon_data.get(melon_name):
+        return melon_data[melon_name]
+    else:
+        return "No price found"
+
+
 
 
 def word_length_sorted(words):
@@ -75,9 +84,16 @@ def word_length_sorted(words):
         >>> word_length_sorted(["ok", "an", "apple", "a", "day"])
         [(1, ['a']), (2, ['an', 'ok']), (3, ['day']), (5, ['apple'])]
     """
-
-    return []
-
+    word_lengths = {}
+    for word in words:
+        i = len(word)
+     
+        if word not in word_lengths:
+            word_lengths[i] = [word]
+        else:
+            word_lengths[i].append(word_counts)
+   
+    return sorted(word_lengths.items())
 
 def translate_to_pirate_talk(phrase):
     """Translate phrase to pirate talk.
@@ -117,8 +133,22 @@ def translate_to_pirate_talk(phrase):
         >>> translate_to_pirate_talk("my student is not a man!")
         'me swabbie be not a man!'
     """
-
-    return ""
+    english_to_pirate = { "sir": "matey", "hotel": "fleabag inn",
+     "student": "swabbie", "man": "matey", "professor": "foul blaggart", 
+     "restaurant": "galley", "your" : "yer", "excuse": "arr", 
+     "students" : "swabbies", "are": "be", "restroom": "head", 
+     "my": "me", "is": "be"}
+    
+    translation = []
+    for word in phrase.split(" "):
+        if word in english_to_pirate:
+            translation.append(english_to_pirate[word])
+        else:
+            translation.append(word)
+        #     translation = translation + english_to_pirate[word] + " "
+        # else:
+        #     translation = translation + word + " "
+    return (" ").join(translation)
 
 
 def kids_game(names):
