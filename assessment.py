@@ -84,16 +84,19 @@ def word_length_sorted(words):
         >>> word_length_sorted(["ok", "an", "apple", "a", "day"])
         [(1, ['a']), (2, ['an', 'ok']), (3, ['day']), (5, ['apple'])]
     """
-    word_lengths = {}
+
+
+    word_length = {}
+    word_list = []
+
     for word in words:
-        item = len(word)
-     
-        if word not in word_lengths:
-            word_lengths[item] = [word]
-        else:
-            word_lengths[item].append(word_counts)
-   
-    return sorted(word_lengths.items())
+        word_length.setdefault(len(word), []).append(word)
+        word_length[len(word)].sort()
+
+    for length in word_length:
+        word_list.append((length, word_length[length]))
+
+    return sorted(word_list)
 
 def translate_to_pirate_talk(phrase):
     """Translate phrase to pirate talk.
@@ -202,6 +205,7 @@ def kids_game(names):
     current_name = names[0]
     results = [current_name]
     last_letter = current_name[-1]
+    
     while last_letter in by_first_letter:
         match_names = by_first_letter[last_letter]
         current_name = match_names.pop(0)
@@ -211,15 +215,6 @@ def kids_game(names):
         last_letter = current_name[-1]
 
     return results
-
-
-    first_word = names[0]
-    names_dict = {}
-    chain_game = [first_word]
-    next_letter = first_word[-1]
-    for name in names[1:]:
-        name_dict[name[0]] = name_dict.get(name[0], [])
-        name_dict[name[0]].append(name)
     
 
 #####################################################################
