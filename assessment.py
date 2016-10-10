@@ -208,14 +208,14 @@ def kids_game(names):
     
     while last_letter in by_first_letter:
         match_names = by_first_letter[last_letter]
-        current_names = match_names.pop(0)
-        results.append(current_names)
+        current_name = match_names.pop(0)
+        results.append(current_name)
         if not match_names:
             del by_first_letter[last_letter]
         last_letter = current_name[-1]
 
     return results
-    
+# continued to work on this past deadline but couldn't solve it.    
 
 #####################################################################
 # You can ignore everything below this.
