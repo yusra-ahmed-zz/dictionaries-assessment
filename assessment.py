@@ -191,6 +191,28 @@ def kids_game(names):
     a dictionary (with the super-fast lookup they provide) can help;
     good solutions here will definitely require a dictionary.
     """
+    by_first_letter = {}
+    for name in names[-1]:
+        first_letter = name[0]
+        if first_letter in by_first_letter:
+            by_first_letter[first_letter].append(name)
+        else:
+            by_first_letter[first_letter] = [name]
+
+    current_name = names[0]
+    results = [current_name]
+    last_letter = current_name[-1]
+    while last_letter in by_first_letter:
+        match_names = by_first_letter[last_letter]
+        current_name = match_names.pop(0)
+        results.append(current_name)
+        if not match_names:
+            del by_first_letter[last_letter]
+        last_letter = current_name[-1]
+
+    return results
+
+
     first_word = names[0]
     names_dict = {}
     chain_game = [first_word]
