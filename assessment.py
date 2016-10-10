@@ -145,9 +145,7 @@ def translate_to_pirate_talk(phrase):
             translation.append(english_to_pirate[word])
         else:
             translation.append(word)
-        #     translation = translation + english_to_pirate[word] + " "
-        # else:
-        #     translation = translation + word + " "
+        
     return (" ").join(translation)
 
 
@@ -193,8 +191,16 @@ def kids_game(names):
     a dictionary (with the super-fast lookup they provide) can help;
     good solutions here will definitely require a dictionary.
     """
-
+    first_word = names[0]
+    names_dict = {}
+    chain_game = [first_word]
+    next_letter = first_word[-1]
+    for name in names[1:]:
+        name_dict[name[0]] = name_dict.get(name[0], [])
+        name_dict[name[0]].append(name)
     return []
+    #Got as far as creating a dictionary for this assignment, but couldn't
+    #figure out how to create a chain.
 
 #####################################################################
 # You can ignore everything below this.
