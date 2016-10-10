@@ -198,7 +198,7 @@ def kids_game(names):
     for name in names[1:]:
         name_dict[name[0]] = name_dict.get(name[0], [])
         name_dict[name[0]].append(name)
-    return []
+    
     #Got as far as creating a dictionary for this assignment, but couldn't
     #figure out how to create a chain.
 
