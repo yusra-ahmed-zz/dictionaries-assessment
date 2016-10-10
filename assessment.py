@@ -86,12 +86,12 @@ def word_length_sorted(words):
     """
     word_lengths = {}
     for word in words:
-        i = len(word)
+        item = len(word)
      
         if word not in word_lengths:
-            word_lengths[i] = [word]
+            word_lengths[item] = [word]
         else:
-            word_lengths[i].append(word_counts)
+            word_lengths[item].append(word_counts)
    
     return sorted(word_lengths.items())
 
